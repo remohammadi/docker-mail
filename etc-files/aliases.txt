@@ -1,0 +1,14 @@
+mailer-daemon: postmaster
+postmaster: root
+nobody: root
+hostmaster: root
+usenet: root
+news: root
+webmaster: root
+www: root
+ftp: root
+abuse: root
+
+# Set ROOT_ALIAS_ADDRESS to your email if you want to receive emails sent to
+# the above addresses.
+

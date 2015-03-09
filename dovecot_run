@@ -1,5 +1,0 @@
-#!/bin/bash
-if [ -f /var/run/dovecot/master.pid ]; then
-  rm /var/run/dovecot/master.pid
-fi
-exec /usr/sbin/dovecot -F

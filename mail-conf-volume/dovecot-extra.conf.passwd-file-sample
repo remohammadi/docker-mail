@@ -1,0 +1,9 @@
+passdb {
+  driver = passwd-file
+  args = /etc/mail-volume/passwd
+}
+userdb {
+  driver = passwd-file
+  args = username_format=%n /etc/mail-volume/passwd
+  default_fields = uid=nobody gid=nogroup home=/var/vmail/%u
+}
