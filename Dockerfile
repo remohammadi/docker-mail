@@ -1,5 +1,7 @@
 FROM debian:wheezy
+MAINTAINER Reza Mohammadi <reza@cafebazaar.ir>
 ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update -q && apt-get upgrade -yq && apt-get install -yq postfix dovecot-imapd dovecot-ldap postfix-ldap supervisor
 
 VOLUME ["/var/mail", "/var/spool/mail"]

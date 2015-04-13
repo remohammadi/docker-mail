@@ -6,9 +6,9 @@ usage() {
     echo "$@" 1>&2;
     echo
     echo "Files: "
-    echo " * /etc/mail-conf-volume/mail.key & /etc/mail-conf-volume/mailcert.pem"
+    echo " * /data/initial-configs/mail.key & /data/initial-configs/mailcert.pem"
     echo "   An SSL key+certificate pair valid for your mail domain."
-    echo " * /etc/mail-conf-volume/dovecot-extra.conf"
+    echo " * /data/initial-configs/dovecot-extra.conf"
     echo "   Authentication and also customization dovecot config, see samples."
     echo
     echo "Environment variables expected: (+ for optional)"
@@ -20,9 +20,9 @@ usage() {
 if [ ! -f $INITIALIZED_TIMESTAMP_FILE ]; then
     echo "Initializing Mail..."
 
-    [ -f "/etc/mail-conf-volume/mailcert.pem" ] || usage "/etc/mail-conf-volume/mailcert.pem not found."
-    [ -f "/etc/mail-conf-volume/mail.key" ] || usage "/etc/mail-conf-volume/mail.key not found."
-    [ -f "/etc/mail-conf-volume/dovecot-extra.conf" ] || usage "/etc/mail-conf-volume/dovecot-extra.conf not found."
+    [ -f "/data/initial-configs/mailcert.pem" ] || usage "/data/initial-configs/mailcert.pem not found."
+    [ -f "/data/initial-configs/mail.key" ] || usage "/data/initial-configs/mail.key not found."
+    [ -f "/data/initial-configs/dovecot-extra.conf" ] || usage "/data/initial-configs/dovecot-extra.conf not found."
     [ "$FULL_HOSTNAME" ] || usage "FULL_HOSTNAME not set."
 
 
@@ -60,8 +60,8 @@ mailbox_size_limit= 0
 recipient_delimiter= +
 inet_interfaces=all
 
-smtpd_tls_cert_file=/etc/mail-conf-volume/mailcert.pem
-smtpd_tls_key_file=/etc/mail-conf-volume/mail.key
+smtpd_tls_cert_file=/data/initial-configs/mailcert.pem
+smtpd_tls_key_file=/data/initial-configs/mail.key
 smtpd_use_tls=yes
 smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
 smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
@@ -87,11 +87,11 @@ service auth {
   }
 }
 ssl=required
-ssl_cert = </etc/mail-conf-volume/mailcert.pem
-ssl_key = </etc/mail-conf-volume/mail.key
+ssl_cert = </data/initial-configs/mailcert.pem
+ssl_key = </data/initial-configs/mail.key
 
 EOL
-    cat /etc/mail-conf-volume/dovecot-extra.conf >> /etc/dovecot/dovecot.conf
+    cat /data/initial-configs/dovecot-extra.conf >> /etc/dovecot/dovecot.conf
     echo "/etc/dovecot/dovecot.conf is updated."
 
 
