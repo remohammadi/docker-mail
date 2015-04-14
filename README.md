@@ -26,7 +26,7 @@ Environment variables expected:
 	# No inbox, just send emails
     $ docker run --name=mail_server --restart=always -d -p 25:25 -p 587:587 -e FULL_HOSTNAME=mail.example.org -v <ABSOLUTE_PATH>/mail-data-volume:/data remohammadi/mail
 	# With more opritons
-    $ docker run -p 25:25 -p 587:587 -e FULL_HOSTNAME=mail.example.org -e ROOT_ALIAS_ADDRESS=admin@example.org -v <ABSOLUTE_PATH>/mail-data-volume:/data -v <ABSOLUTE_PATH>/mail-data-volume:/var/mail remohammadi/mail
+    $ docker run -p 25:25 -p 587:587 -e FULL_HOSTNAME=mail.example.org -e ROOT_ALIAS_ADDRESS=admin@example.org -v <ABSOLUTE_PATH>/mail-data-volume:/data remohammadi/mail
 
 ## TODO
  * LDAP integration
