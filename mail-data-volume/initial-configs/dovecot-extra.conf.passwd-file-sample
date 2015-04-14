@@ -3,7 +3,6 @@ passdb {
   args = /data/initial-configs/passwd
 }
 userdb {
-  driver = passwd-file
-  args = username_format=%n /data/initial-configs/passwd
-  default_fields = uid=nobody gid=nogroup home=/var/vmail/%u
+  driver = static
+  args = uid=nobody gid=nogroup home=/var/vmail/%u
 }
